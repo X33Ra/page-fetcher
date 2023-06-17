@@ -18,7 +18,12 @@ const downloadResource = (url, filePath) => {
       return;
     }
 
+    if (response.statusCode !== 200) {
+      console.log('Error:', response.statusMessage);
+      return;
+    }
 
+    
   });
 };
 
