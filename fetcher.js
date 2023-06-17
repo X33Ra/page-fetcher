@@ -22,7 +22,15 @@ const downloadResource = (url, filePath) => {
       console.log('Error:', response.statusMessage);
       return;
     }
-
+    fs.writeFile(filePath, body, (error) => {
+      if (error) {
+        console.log('Error:', error);
+        return;
+      }
+      
+      const fileSize = Buffer.byteLength(body);
+      console.log(`Downloaded and saved ${fileSize} bytes to ${filePath}`);
+    });
     
   });
 };
